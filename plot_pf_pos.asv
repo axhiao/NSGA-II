@@ -1,0 +1,54 @@
+str_pf = 'E:\进化多目标方法工具箱\NSGAII-DE修改版\POF\';
+str_pos = 'E:\进化多目标方法工具箱\NSGAII-DE修改版\POS\';
+
+for function_num = 1:7  
+    for i=1:50
+        %
+        data_pf = strcat(str_pf,num2str(i));
+        data_pf = strcat(data_pf,num2str(0));
+        data_pf = strcat(data_pf,'\POF_NSGA2_UF');
+        data_pf = strcat(data_pf,num2str(function_num));
+        data_pf = strcat(data_pf,'_RUN1.txt');
+        pf = importdata(data_pf);
+        %
+        str_pos = strcat(str_pos,num2str(i));
+        str_pos = strcat(str_pos,num2str(0));
+        str_pos = strcat(str_pos,'\POS_NSGA2_UF');
+        str_pos = strcat(str_pos,num2str(function_num));
+        str_pos = strcat(str_pos,'_RUN1.txt');
+        pos = importdata(str_pos);    
+    %% show
+        switch i
+            case {1 2 3}
+                x=(0:0.01:1)';
+                y=1-x.^0.5;
+                subplot(1,2,1);
+                plot(pf(:,1),pf(:,2),'ro',x(:),y(:),'-g*');
+                axis([0 1.1 0 1.1]);
+                
+                subplot(1,2,2);
+                switch i
+                    case 1
+                    case 2
+                    case 3
+                end
+            case 4
+            case 5
+            case 6
+            case 7
+            otherwise
+        end
+        x=(0:0.01:1)';
+        y=1-x.^0.5;
+    % y=1-x.^2;
+    % y=1-x;
+%    plot(pf(:,1),pf(:,2),'ro');
+%     plot(pf(:,1),pf(:,2),'ro',landa(:,1)*2-1,landa(:,2)*16,'b*');
+         plot(pf(:,1),pf(:,2),'ro',x(:),y(:),'-g*');
+%       plot3(pf(:,1),pf(:,2),pf(:,3),'ro');
+%    plot(pf(:,1),pf(:,2),'ro',landa(:,1)*5-20,landa(:,2)*9-9,'b*');
+    xlabel('f1');ylabel('f2');title('zdt3');
+     axis([0 1.1 0 1.1]);
+    pause(1);
+    end
+end
